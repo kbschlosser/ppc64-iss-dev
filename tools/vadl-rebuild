@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+openvadl_dir="/workspaces/ppc64-iss-dev/openvadl"
+
+if [ ! -d "$openvadl_dir" ]; then
+    echo "Error: openvadl directory not found at $openvadl_dir" >&2
+    exit 1
+fi
+
+echo "Building openvadl..."
+cd "$openvadl_dir"
+./gradlew installDist nativeCompile
+echo "Build complete!"

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "No sys spec set (e.g. ppc64/ppc64.vadl)"
+    exit 1
+fi
+
+workspace=/workspaces/ppc64-iss-dev
+iss_out=/root/gen
+spec_path="$workspace/openvadl/sys/$1"
+echo "Generating ISS from $spec_path specification to $iss_out/iss ..."
+
+# Check if build directory exists
+init_flag=""
+if [ ! -d "$iss_out/iss/build" ]; then
+    init_flag="--init"
+fi
+
+cd $workspace
+nativevadl iss -o $iss_out $init_flag $spec_path ${@:2}

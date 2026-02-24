@@ -1,0 +1,36 @@
+#!/bin/bash
+# Build the ISS (QEMU) with the current configuration.
+
+set -e
+
+iss_dir=/root/gen/iss
+iss_build_path="$iss_dir/build"
+
+targetName="$1"
+
+# abort if target name not set
+if [ -z "$targetName" ]; then
+    echo "No target name set."
+    exit 1
+fi
+
+target="$targetName-softmmu"
+
+# used to check if we have to configure QEMU first for the target
+target_conf="$iss_build_path/$targetName-softmmu-config-target.h"
+
+# If target_conf file does not exist, we have to configure QEMU first
+if [ ! -f "$target_conf" ]; then
+    echo "(Re-)Configuring target $target..."
+    mkdir -p $iss_build_path
+    cd $iss_build_path
+
+    # remove all old target conf files, to reset check
+    rm -f *.h
+
+    ../configure --cc='ccache gcc' --target-list=$target,ppc64-softmmu
+fi
+
+cd $iss_build_path
+
+make -j$(nproc) && ccache -s

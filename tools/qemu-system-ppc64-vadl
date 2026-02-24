@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+qemu_bin="/root/gen/iss/build/qemu-system-ppc64sfs"
+
+if [ -z "$1" ]; then
+    echo "No sys spec set (e.g. ppc64/ppc64.vadl)"
+    exit 1
+fi
+
+if [ ! -f "$qemu_bin" ]; then
+    echo "Error: QEMU binary not found at $qemu_bin" >&2
+    echo "Run 'iss-gen-sys ppc64/ppc64.vadl' to generate it." >&2
+    exit 1
+fi
+
+exec "$qemu_bin" "$@"

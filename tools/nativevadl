@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+bin="/workspaces/ppc64-iss-dev/openvadl/vadl-cli/build/native/nativeCompile/openvadl"
+
+if [ ! -f "$bin" ]; then
+    echo "Error: nativevadl binary not found at $bin" >&2
+    echo "Run 'vadl-rebuild' to build openvadl." >&2
+    exit 1
+fi
+
+exec "$bin" "$@"
