@@ -25,4 +25,8 @@ Adapted from: https://github.com/OpenVADL/aarch64-iss-dev
    make run-vadl-test1   # lässt test1.S auf dem generierten ISS rennen
    make run-qemu-test1   # lässt test1.S auf dem upstream ISS rennen
    ```
-
+10. Benchmark ausführen:
+    ```
+    cd test
+    ./benchmark.sh
+    ```

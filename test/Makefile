@@ -33,10 +33,10 @@ $(OUT_LE)/%.elf: $(OUT_LE)/%.o link.ld
 	$(LD_LE) $(LDFLAGS) $< -o $@
 
 run-vadl-%: $(OUT_LE)/%.elf
-	$(VADL) -nographic -monitor none -plugin $(STOPTRIGGER),addr=0xFC -bios $<
+	$(VADL) -nographic -monitor none -plugin $(STOPTRIGGER),addr=0xFC -bios $< 
 
 run-qemu-%: $(OUT_BE)/%.elf
-	$(QEMU) -nographic -monitor none -plugin $(STOPTRIGGER),addr=0xFC -bios $<
+	$(QEMU) -nographic -monitor none -plugin $(STOPTRIGGER),addr=0xFC -bios $< 
 
 clean:
 	rm -rf $(OUT_DIR)
