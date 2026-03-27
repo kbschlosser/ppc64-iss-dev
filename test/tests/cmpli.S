@@ -12,6 +12,7 @@ loop:
     .rept 10000
         cmpli   0, 0, 0, 0
     .endr
+    addi 0, 0, 1
 
     addi    3, 3, -1      # loop counter--
     b       loop

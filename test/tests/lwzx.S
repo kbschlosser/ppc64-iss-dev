@@ -13,6 +13,7 @@ loop:
     .rept 10000
         lwzx 0, 0, 1
     .endr
+    addi 1, 0, 0
 
     addi    3, 3, -1      # loop counter--
     b       loop

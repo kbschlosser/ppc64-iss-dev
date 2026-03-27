@@ -12,6 +12,7 @@ loop:
     .rept 10000
         rlwimi 0, 1, 8, 0, 31
     .endr
+    addi 1, 0, 0
 
     addi    3, 3, -1      # loop counter--
     b       loop
