@@ -3,7 +3,7 @@
 .section .text
 _start:
     nop
-    lis      3, 0x0006    # loop counter
+    lis      3, 0x002A    # loop counter
 
 loop:
     cmpli   0, 0, 3, 0
