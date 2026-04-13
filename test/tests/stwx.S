@@ -3,17 +3,18 @@
 .section .text
 _start:
     nop
-    lis      3, 0x0030    # loop counter
-    lis      1, 0x0001    # store address
+    lis      3, 0x000A    # loop counter
+    lis      4, 0x0001    # store address
 
 loop:
     cmpli   0, 0, 3, 0
     beqa    0xfc          # branch to exit if loop counter equals zero
     
+    addi 1, 1, 1
     .rept 10000
-        stwx 0, 0, 1
+        stwx 1, 0, 4
     .endr
-    addi 0, 0, 1
+    add 2, 1, 0
 
     addi    3, 3, -1      # loop counter--
     b       loop

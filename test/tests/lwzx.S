@@ -3,17 +3,17 @@
 .section .text
 _start:
     nop
-    lis      3, 0x0040    # loop counter
-    lis      1, 0x0001    # load address
+    lis      3, 0x000A    # loop counter
+    lis      4, 0x0001    # load address
 
 loop:
     cmpli   0, 0, 3, 0
     beqa    0xfc          # branch to exit if loop counter equals zero
     
     .rept 10000
-        lwzx 0, 0, 1
+        lwzx 1, 0, 4
     .endr
-    addi 1, 0, 0
+    add 2, 2, 1
 
     addi    3, 3, -1      # loop counter--
     b       loop

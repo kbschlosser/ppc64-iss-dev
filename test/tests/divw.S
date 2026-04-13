@@ -3,16 +3,18 @@
 .section .text
 _start:
     nop
-    lis      3, 0x002A    # loop counter
+    lis      3, 0x0005    # loop counter
+    lis      2, 2
 
 loop:
     cmpli   0, 0, 3, 0
     beqa    0xfc          # branch to exit if loop counter equals zero
     
+    addis 1, 1, 0xffff
     .rept 10000
-        divw 0, 0, 1
+        divw 1, 1, 2
     .endr
-    addi 1, 0, 0
+    add 2, 2, 1
 
     addi    3, 3, -1      # loop counter--
     b       loop
