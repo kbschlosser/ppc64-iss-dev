@@ -10,10 +10,18 @@ loop:
     cmpli   0, 0, 3, 0
     beqa    0xfc          # branch to exit if loop counter equals zero
     
-    .rept 10000
-        subfeo. 1, 1, 1
+    .rept 1000
+        subfeo. 4 , 4 , 1
+        subfeo. 5 , 4 , 1
+        subfeo. 6 , 5 , 1
+        subfeo. 7 , 6 , 1
+        subfeo. 8 , 7 , 1
+        subfeo. 9 , 8 , 1
+        subfeo. 10, 9 , 1
+        subfeo. 11, 10, 1
+        subfeo. 12, 11, 1
+        subfeo. 13, 12, 1
     .endr
-    add 2, 1, 0
 
     addi    3, 3, -1      # loop counter--
     b       loop

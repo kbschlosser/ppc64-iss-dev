@@ -8,12 +8,12 @@ tests=$(ls tests/*.S 2>/dev/null | xargs -n1 basename | sed 's/\.S$//')
 declare -a names times_qemu times_vadl
 
 for t in $tests; do
-    echo "Running test: $t"
     names+=("$t")
-
+    echo "Running QEMU $t benchmark"
     tq=$( { time -p make run-qemu-$t 2>/dev/null; } 2>&1 | awk '/^real/{print $2}' )
     times_qemu+=("$tq")
 
+    echo "Running VADL $t benchmark"
     tv=$( { time -p make run-vadl-$t 2>/dev/null; } 2>&1 | awk '/^real/{print $2}' )
     times_vadl+=("$tv")
 done

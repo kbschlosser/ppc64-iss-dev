@@ -12,7 +12,6 @@ loop:
     .rept 10000
         addi 1, 1, 1
     .endr
-    add 2, 2, 1
 
     addi    3, 3, -1      # loop counter--
     b       loop
